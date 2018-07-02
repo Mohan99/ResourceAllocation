@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 8, 2017 3:19:11 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gcs.db.businessDao.Resourceallocations" table="RESOURCEALLOCATIONS">
+        <id name="resId" type="java.lang.Integer">
+            <column name="RES_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="employeeId" type="int">
+            <column name="EMPLOYEE_ID" />
+        </property>
+        <property name="projectId" type="int">
+            <column name="PROJECT_ID" />
+        </property>
+        <property name="allocation" type="java.lang.String">
+            <column name="ALLOCATION" />
+        </property>
+        <property name="projectFrom" type="java.util.Date">
+            <column name="PROJECT_FROM" />
+        </property>
+        <property name="projectTo" type="java.util.Date">
+            <column name="PROJECT_TO" />
+        </property>
+        <property name="projectCompleted" type="java.lang.String">
+            <column name="PROJECT_COMPLETED" />
+        </property>
+        <property name="billable" type="java.lang.String">
+            <column name="BILLABLE" />
+        </property>
+    </class>
+</hibernate-mapping>

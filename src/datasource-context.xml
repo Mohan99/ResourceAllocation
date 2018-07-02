@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/resourceallocations" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	<bean id="dataSourcePool" class="org.apache.commons.pool.impl.GenericObjectPool">
+		<property name="minEvictableIdleTimeMillis" value="300000"/>
+		<property name="timeBetweenEvictionRunsMillis" value="60000"/>
+		<property name="maxActive" value="10"/>
+		<property name="maxIdle" value="10"/>
+		<property name="whenExhaustedAction" value="2"/>
+	</bean>
+	<bean id="dscf" class="org.apache.commons.dbcp.DataSourceConnectionFactory">
+		<constructor-arg><ref bean="dataSource"/></constructor-arg>
+	</bean>
+	<bean id="pcf" class="org.apache.commons.dbcp.PoolableConnectionFactory">
+		<constructor-arg index="0"><ref bean="dscf"/></constructor-arg>
+		<constructor-arg index="1"><ref bean="dataSourcePool"/></constructor-arg>
+		<constructor-arg index="2"><null/></constructor-arg>
+		<constructor-arg index="3"><null/></constructor-arg>
+		<constructor-arg index="4"><value>false</value></constructor-arg>
+		<constructor-arg index="5"><value>true</value></constructor-arg>
+	</bean>
+	<bean id="activityDataSource" class="org.apache.commons.dbcp.PoolingDataSource" depends-on="pcf">
+		<constructor-arg><ref bean="dataSourcePool"/></constructor-arg>
+	</bean>
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean> -->
+	<!-- <bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean> -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="activityDataSource" />
+		<property name="annotatedClasses">
+			<list>
+			<value>com.gcs.dbDao.Employee</value> 
+			<value>com.gcs.dbDao.LoginDao</value>
+			<value>com.gcs.dbDao.ProjectDao</value> 
+			<value>com.gcs.dbDao.ResourceDao</value>
+			<value>com.gcs.dbDao.UsersDao</value>	
+			<value>com.gcs.dbDao.CategoryDao</value>
+			<value>com.gcs.dbDao.HolidayDao</value>	
+			<value>com.gcs.dbDao.LeavesDao</value>			
+				<!-- <value>com.gemini.services.activity.domain.ChildActivity</value>
+				<value>com.gemini.services.user.domain.User</value>
+				<value>com.gemini.services.user.domain.UserRoleAssoc</value>
+				<value>com.gemini.services.device.domain.Location</value>
+				<value>com.gemini.services.device.domain.Device</value>
+				<value>com.gemini.services.device.domain.DeviceLocationLog</value> -->
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">${jdbc.showsql}</prop>
+				<prop key="hibernate.connection.autocommit">${jdbc.autocommit}</prop>
+			</props>
+		</property>
+		
+		
+		
+		 
+	</bean>
+</beans>

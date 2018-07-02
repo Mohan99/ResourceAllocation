@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 7, 2017 5:52:04 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.gcs.db.businessDao.EmployeeSkillSet" table="EMPLOYEESKILLSET"
+		dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<column name="ID" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="empId" class="com.gcs.db.businessDao.Employee"
+			lazy="false" fetch="join">
+			<column name="EMP_ID" />
+		</many-to-one>
+		<many-to-one name="skillSet" class="com.gcs.db.businessDao.SkillSet"
+			lazy="false" fetch="join">
+			<column name="SKILL_ID" />
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

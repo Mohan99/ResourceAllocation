@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 7, 2017 5:52:04 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gcs.db.businessDao.Category" table="CATEGORY">
+        <id name="categoryId" type="java.lang.Integer">
+            <column name="CATEGORY_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="categoryName" type="java.lang.String">
+            <column name="CATEGORY_NAME" />
+        </property>
+        <property name="status" type="boolean">
+            <column name="STATUS" />
+        </property>
+        <property name="isCategory" type="java.lang.String">
+            <column name="IS_CATEGORY" />
+        </property>
+         <!--  <set name="employees" table="CATEGORY" inverse="false" lazy="true">
+            <key>
+                <column name="CATEGORY_ID" />
+            </key>
+            <element type="string">
+                <column name="EMPLOYEES" />
+            </element>
+        </set>   -->
+    </class>
+</hibernate-mapping>

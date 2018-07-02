@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 7, 2017 5:52:04 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping default-lazy="false">
+ <class name="com.gcs.db.businessDao.Projects" table="PROJECTS">
+  <id name="projectId" type="java.lang.Integer">
+   <column name="PROJECT_ID"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="projectName" type="java.lang.String">
+   <column name="PROJECT_NAME"/>
+  </property>
+  <property generated="never" lazy="false" name="startDate" type="java.util.Date">
+   <column name="START_DATE"/>
+  </property>
+  <property generated="never" lazy="false" name="endDate" type="java.util.Date">
+   <column name="END_DATE"/>
+  </property>
+  <many-to-one class="com.gcs.db.businessDao.Employee" fetch="join"
+   lazy="false" name="projectManager">
+   <column name="PROJECT_MANAGER"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="status" type="boolean">
+   <column name="STATUS"/>
+  </property>
+  <property name="calBench" type="java.lang.String">
+            <column name="CAL_BENCH" />
+        </property>
+        
+  <property generated="never" lazy="false" name="deleteStatus" type="boolean">
+   <column name="DELETE_STATUS"/>
+  </property>
+  <property generated="never" lazy="false" name="projectType" type="java.lang.String">
+   <column name="PROJECT_TYPE"/>
+  </property>
+  
+  
+  <!-- <set name="resourceallocationses" table="PROJECTS" inverse="false" lazy="true">
+            <key>
+                <column name="PROJECT_ID" />
+            </key>
+            <element type="string">
+                <column name="RESOURCEALLOCATIONSES" />
+            </element>
+        </set>  -->
+ </class>
+</hibernate-mapping>

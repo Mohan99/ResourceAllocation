@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 7, 2017 5:52:04 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gcs.db.businessDao.Leaves" table="LEAVES">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empId" class="com.gcs.db.businessDao.Employee"
+			lazy="false" fetch="join">
+			<column name="emp_Id" />
+		</many-to-one>
+        <property name="fromdate" type="java.util.Date">
+            <column name="FROMDATE" />
+        </property>
+        <property name="todate" type="java.util.Date">
+            <column name="TODATE" />
+        </property>
+        <property name="totalleaves" type="java.lang.Integer">
+            <column name="TOTALLEAVES" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

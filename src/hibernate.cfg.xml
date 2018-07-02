@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/resourceallocations</property>
+		<property name="hibernate.connection.url">jdbc:mysql://192.168.30.129:3306/gcsreportsdb</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.search.autoregister_listeners">true</property>
+		<property name="hibernate.validator.apply_to_ddl">false</property>
+		<mapping resource="com/gcs/db/hbm/Users.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Category.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Countries.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/State.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Cities.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Workplace.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Projects.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Employee.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Resourceallocations.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Usersemployee.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Holidaycalender.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Leaves.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/Timesheet.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/SkillSet.hbm.xml" />
+		<mapping resource="com/gcs/db/hbm/EmployeeSkillSet.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

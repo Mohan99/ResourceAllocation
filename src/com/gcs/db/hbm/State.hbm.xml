@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 7, 2017 5:52:04 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gcs.db.businessDao.State" table="STATE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="countryId" type="int">
+            <column name="COUNTRY_ID" />
+        </property>
+         <!--  <set name="employees" table="STATE" cascade="all" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <element type="string">
+                <column name="EMPLOYEES" />
+            </element>
+        </set>  -->
+    </class>
+</hibernate-mapping>
